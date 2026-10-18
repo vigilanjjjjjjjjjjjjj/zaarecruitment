@@ -1,342 +1,472 @@
+HTML
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Recruitment Capture</title>
+<title>Zaaaah Recruiter | Recruitment Capture</title>
 <style>
-  :root{
-    --bg:#fcd6e5; --card:#ffeaf2; --input:#ffffff; --line:#f4b3cc;
-    --text:#4a2a2a; --muted:#8e5a5a; --accent:#a35a66; --accentSoft:#ffdbe8; --btn:#a35a66; --btnText:#ffffff;
-    --ok:#e3f3e8; --okText:#14683f; --err:#ffd9df; --errText:#a1102e;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:16px;min-height:100vh}
-  .wrap{max-width:560px;margin:0 auto}
-  h1{font-size:22px;margin:4px 0 14px;color:var(--accent)}
-  .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-  .tab{background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:16px 6px;font-size:16px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center}
-  .tab.active{background:#ffffff;color:var(--accent);border-color:var(--accent)}
-  .panel{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px}
-  .hidden{display:none}
-  label{display:block;font-weight:600;margin:16px 0 8px}
-  label:first-child{margin-top:0}
-  input,select,textarea{width:100%;background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:14px;font-size:17px;font-family:inherit}
-  textarea{min-height:110px;resize:vertical}
-  input::placeholder,textarea::placeholder{color:#d9a9bd}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .camp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-  .camp button{background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:16px 6px;font-size:16px;font-weight:600;cursor:pointer}
-  .camp button small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
-  .camp button.sel{border-color:var(--accent);background:var(--accentSoft)}
-  .save{width:100%;margin-top:22px;background:var(--btn);color:var(--btnText);border:0;border-radius:16px;padding:18px;font-size:19px;font-weight:700;cursor:pointer}
-  .save:disabled{opacity:.6}
-  .msg{margin-top:14px;padding:14px;border-radius:14px;font-size:17px;transition:opacity .5s}
-  .msg.ok{background:var(--ok);color:var(--okText)}
-  .msg.err{background:var(--err);color:var(--errText)}
-  .count{color:var(--muted);margin:0 0 12px}
-  .chips{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
-  .chip{background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:999px;padding:10px 18px;font-size:17px;font-weight:600;cursor:pointer}
-  .chip.active{background:var(--btn);color:var(--btnText);border-color:var(--btn)}
-  .letter{font-size:28px;font-weight:800;color:var(--accent);margin:22px 0 10px}
-  .person{background:var(--card);border:2px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden}
-  .ph{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:16px;border-bottom:2px solid var(--line);flex-wrap:wrap}
-  .ph b{font-size:20px}
-  .badges{display:flex;gap:8px}
-  .badge{border:2px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:600;color:var(--muted)}
-  .badge.on{border-color:var(--accent);color:var(--accent);background:var(--accentSoft)}
-  .pb{padding:16px}
-  .pb .k{color:var(--muted);font-weight:600;margin-top:14px}
-  .pb .k:first-child{margin-top:0}
-  .pb .v{font-size:18px;word-break:break-word;white-space:pre-wrap}
-  .empty{color:var(--muted);text-align:center;padding:30px 0}
-  .replay{background:var(--input);color:var(--muted);border:2px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;margin:0 0 14px}
+:root{
+  --bg:#fcd6e5;--card:#ffeaf2;--input:#fff;--line:#f4b3cc;
+  --text:#4a2a2a;--muted:#8e5a5a;--accent:#a35a66;
+  --accentSoft:#ffdbe8;--btn:#a35a66;--ok:#e3f3e8;
+  --okText:#14683f;--err:#ffd9df;--errText:#a1102e
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:16px;min-height:100vh}
+.wrap{max-width:650px;margin:auto}
+h1{font-size:24px;margin:4px 0 6px;color:var(--accent)}
+.clockbox{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 16px}
+.clock-label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+#liveClock{font-size:18px;font-weight:750;font-variant-numeric:tabular-nums;margin-top:3px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.tab{background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:14px;padding:14px 6px;font-size:15px;font-weight:650;cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center}
+.tab.active{background:#fff;color:var(--accent);border-color:var(--accent)}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px}
+.hidden{display:none!important}
+label{display:block;font-weight:650;margin:16px 0 8px}
+input,select,textarea{width:100%;background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:12px;padding:13px;font-size:16px;font-family:inherit}
+textarea{min-height:105px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#b88b9e}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.camp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.camp button{background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:12px;padding:14px 6px;font-size:16px;font-weight:650;cursor:pointer}
+.camp button small{display:block;color:var(--muted);font-weight:400;margin-top:4px}
+.camp button.sel{border-color:var(--accent);background:var(--accentSoft)}
+.save{width:100%;margin-top:22px;background:var(--btn);color:white;border:0;border-radius:14px;padding:16px;font-size:18px;font-weight:750;cursor:pointer}
+.save:disabled{opacity:.6;cursor:wait}
+.msg{margin-top:14px;padding:13px;border-radius:12px;font-size:15px}
+.msg.ok{background:var(--ok);color:var(--okText)}
+.msg.err{background:var(--err);color:var(--errText)}
+.count{color:var(--muted);margin:0 0 12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.chip{background:var(--input);color:var(--text);border:2px solid var(--line);border-radius:999px;padding:9px 15px;font-size:15px;font-weight:650;cursor:pointer}
+.chip.active{background:var(--btn);color:white;border-color:var(--btn)}
+.letter{font-size:25px;font-weight:800;color:var(--accent);margin:20px 0 10px}
+.person{background:var(--card);border:2px solid var(--line);border-radius:15px;margin-bottom:13px;overflow:hidden}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px;border-bottom:2px solid var(--line);flex-wrap:wrap}
+.ph b{font-size:18px;overflow-wrap:anywhere}
+.badges{display:flex;gap:7px;flex-wrap:wrap}
+.badge{border:2px solid var(--line);border-radius:999px;padding:6px 10px;font-size:13px;font-weight:650;color:var(--muted)}
+.badge.on{border-color:var(--accent);color:var(--accent);background:var(--accentSoft)}
+.pb{padding:14px}
+.pb .k{color:var(--muted);font-size:13px;font-weight:700;margin-top:12px}
+.pb .v{font-size:16px;word-break:break-word;white-space:pre-wrap}
+.empty{color:var(--muted);text-align:center;padding:28px 0}
+.replay{background:var(--input);color:var(--muted);border:2px solid var(--line);border-radius:999px;padding:8px 13px;font-size:14px;font-weight:650;cursor:pointer;margin:0 0 12px}
+.hint{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.4}
+@media(max-width:420px){body{padding:10px}.panel{padding:13px}.tabs{gap:6px}.tab{font-size:13px;padding:12px 4px}.row{gap:8px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Recruitment Capture</h1>
-  <button class="replay" id="replayWelcome" type="button">🔊 Replay welcome</button>
+<h1>Zaaaah Recruiter</h1>
 
-  <div class="tabs">
-    <button class="tab active" id="tabAdd" type="button">Add applicant</button>
-    <button class="tab" id="tabProfiles" type="button">Profiles</button>
-    <a class="tab" href="manage.html">Manage</a>
-  </div>
+<div class="clockbox">
+  <div class="clock-label">South African Standard Time (SAST)</div>
+  <div id="liveClock">Loading South African time...</div>
+</div>
 
-  <!-- ADD APPLICANT -->
-  <div class="panel" id="addPanel">
-    <form id="applicantForm" novalidate>
-      <label for="firstName">Name</label>
-      <input id="firstName" type="text" autocomplete="given-name" placeholder="First name">
+<button class="replay" id="replayWelcome" type="button">🔊 Replay welcome</button>
 
-      <label for="surname">Surname</label>
-      <input id="surname" type="text" autocomplete="family-name" placeholder="Surname">
+<div class="tabs">
+  <button class="tab active" id="tabAdd" type="button">Add applicant</button>
+  <button class="tab" id="tabProfiles" type="button">Profiles</button>
+  <a class="tab" href="manage.html">Manage</a>
+</div>
 
-      <label for="phone">Phone number</label>
-      <input id="phone" type="tel" autocomplete="tel" placeholder="+27...">
+<div class="panel" id="addPanel">
+<form id="applicantForm" novalidate>
 
-      <label for="email">Email</label>
-      <input id="email" type="email" autocomplete="email" placeholder="name@email.com">
+<label for="firstName">First name *</label>
+<input id="firstName" type="text" autocomplete="given-name" placeholder="First name" maxlength="80" required>
 
-      <label for="address">Address</label>
-      <input id="address" type="text" autocomplete="street-address" placeholder="Street, suburb">
+<label for="surname">Surname *</label>
+<input id="surname" type="text" autocomplete="family-name" placeholder="Surname" maxlength="80" required>
 
-      <div class="row">
-        <div>
-          <label for="years">Years of experience</label>
-          <select id="years"></select>
-        </div>
-        <div>
-          <label for="months">Months</label>
-          <select id="months"></select>
-        </div>
-      </div>
+<label for="idNumber">South African ID number *</label>
+<input id="idNumber" type="text" inputmode="numeric" autocomplete="off" placeholder="13-digit SA ID number" maxlength="13" pattern="[0-9]{13}" required>
+<p class="hint">Enter the applicant's 13-digit ID number. Keep this sensitive information secure.</p>
 
-      <label for="experience">Work experience</label>
-      <textarea id="experience" placeholder="Previous jobs, roles and what you did"></textarea>
+<label for="phone">Phone number *</label>
+<input id="phone" type="tel" autocomplete="tel" placeholder="+27..." maxlength="30" required>
 
-      <label>Campaign</label>
-      <div class="camp" id="camp">
-        <button type="button" data-v="UK">UK</button>
-        <button type="button" data-v="Local">Local</button>
-        <button type="button" data-v="Both">Both<small>UK + Local</small></button>
-      </div>
+<label for="email">Email *</label>
+<input id="email" type="email" autocomplete="email" placeholder="name@email.com" maxlength="254" required>
 
-      <button class="save" id="saveBtn" type="submit">Save applicant</button>
-      <div id="msg" class="msg hidden"></div>
-    </form>
-  </div>
+<label for="address">Address</label>
+<input id="address" type="text" autocomplete="street-address" placeholder="Street, suburb" maxlength="250">
 
-  <!-- PROFILES -->
-  <div id="profilesPanel" class="hidden">
-    <p class="count" id="count"></p>
-    <input id="search" type="search" placeholder="Search by name, surname, email or number">
-    <div class="chips" id="filters">
-      <button class="chip active" type="button" data-f="All">All</button>
-      <button class="chip" type="button" data-f="UK">UK</button>
-      <button class="chip" type="button" data-f="Local">Local</button>
-      <button class="chip" type="button" data-f="Both">Both</button>
-    </div>
-    <div id="list"></div>
-  </div>
+<div class="row">
+<div>
+<label for="years">Years of experience</label>
+<select id="years"></select>
+</div>
+<div>
+<label for="months">Months</label>
+<select id="months"></select>
+</div>
+</div>
+
+<label for="experience">Work experience</label>
+<textarea id="experience" placeholder="Previous jobs, roles and responsibilities" maxlength="5000"></textarea>
+
+<label>Campaign *</label>
+<div class="camp" id="camp">
+<button type="button" data-v="UK" aria-pressed="false">UK</button>
+<button type="button" data-v="Local" aria-pressed="false">Local</button>
+<button type="button" data-v="Both" aria-pressed="false">Both<small>UK + Local</small></button>
+</div>
+
+<button class="save" id="saveBtn" type="submit">Save applicant</button>
+<div id="msg" class="msg hidden" role="status" aria-live="polite"></div>
+</form>
+</div>
+
+<div id="profilesPanel" class="hidden">
+<p class="count" id="count"></p>
+<input id="search" type="search" placeholder="Search name, ID, email or phone" aria-label="Search applicants">
+<div class="chips" id="filters">
+<button class="chip active" type="button" data-f="All">All</button>
+<button class="chip" type="button" data-f="UK">UK</button>
+<button class="chip" type="button" data-f="Local">Local</button>
+<button class="chip" type="button" data-f="Both">Both</button>
+</div>
+<div id="list"></div>
+</div>
 </div>
 
 <script type="module">
-  import * as cfg from "./firebase-config.js";
-  import { collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import * as cfg from "./firebase-config.js";
+import {
+  collection, addDoc, getDocs, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  const db = cfg.db || cfg.default;
-  const COLLECTION = "applicants"; // change this if your existing data lives in a different collection
+const db = cfg.db || cfg.default;
+const COLLECTION = "applicants";
+const $ = id => document.getElementById(id);
 
-  const $ = (id) => document.getElementById(id);
-  const form = $("applicantForm");
-  const msg = $("msg");
-  let campaign = "";
-  let people = [];
-  let filter = "All";
-  let msgTimer;
+let campaign = "";
+let people = [];
+let filter = "All";
+let msgTimer;
 
-  // WELCOME VOICE (browsers only allow sound after the first tap)
-  const WELCOME_TEXT = "Welcome to Zaaaah recruiter. Owned by Mclaren Money-Tization.";
-  let welcomed = false;
+const clockFormatter = new Intl.DateTimeFormat("en-ZA", {
+  timeZone: "Africa/Johannesburg",
+  weekday: "short",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false
+});
 
-  function speakWelcome() {
-    if (!("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(WELCOME_TEXT);
-    u.rate = 0.95;
-    u.lang = "en-GB";
-    window.speechSynthesis.speak(u);
-  }
+function updateClock() {
+  $("liveClock").textContent = clockFormatter.format(new Date()) + " SAST";
+}
+updateClock();
+setInterval(updateClock, 1000);
 
-  function welcomeOnce() {
-    if (welcomed) return;
-    welcomed = true;
-    speakWelcome();
-  }
+// Welcome voice
+const WELCOME_TEXT = "Welcome to Zaaaah Recruiter. Owned by McLaren Money-Tization.";
+let welcomed = false;
 
-  document.addEventListener("pointerdown", welcomeOnce, { once: true });
-  document.addEventListener("keydown", welcomeOnce, { once: true });
-  $("replayWelcome").addEventListener("click", (e) => {
-    e.stopPropagation();
-    welcomed = true;
-    speakWelcome();
+function speakWelcome() {
+  if (!("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(WELCOME_TEXT);
+  utterance.rate = 0.95;
+  utterance.lang = "en-GB";
+  window.speechSynthesis.speak(utterance);
+}
+function welcomeOnce() {
+  if (welcomed) return;
+  welcomed = true;
+  speakWelcome();
+}
+document.addEventListener("pointerdown", welcomeOnce, {once:true});
+document.addEventListener("keydown", welcomeOnce, {once:true});
+$("replayWelcome").addEventListener("click", event => {
+  event.stopPropagation();
+  welcomed = true;
+  speakWelcome();
+});
+
+// Experience dropdowns
+$("years").innerHTML = Array.from({length:41}, (_, i) =>
+  `<option value="${i}">${i} year${i === 1 ? "" : "s"}</option>`
+).join("");
+
+$("months").innerHTML = Array.from({length:12}, (_, i) =>
+  `<option value="${i}">${i} month${i === 1 ? "" : "s"}</option>`
+).join("");
+
+// Campaign selection
+$("camp").addEventListener("click", event => {
+  const button = event.target.closest("button[data-v]");
+  if (!button) return;
+  campaign = button.dataset.v;
+  document.querySelectorAll("#camp button").forEach(item => {
+    const selected = item === button;
+    item.classList.toggle("sel", selected);
+    item.setAttribute("aria-pressed", String(selected));
   });
+});
 
-  // Dropdowns
-  $("years").innerHTML = Array.from({length: 41}, (_, i) => `<option value="${i}">${i} year${i === 1 ? "" : "s"}</option>`).join("");
-  $("months").innerHTML = Array.from({length: 12}, (_, i) => `<option value="${i}">${i} month${i === 1 ? "" : "s"}</option>`).join("");
+function showMsg(text, type) {
+  clearTimeout(msgTimer);
+  $("msg").textContent = text;
+  $("msg").className = "msg " + type;
+  msgTimer = setTimeout(() => $("msg").classList.add("hidden"), 6000);
+}
 
-  // Campaign picker
-  $("camp").addEventListener("click", (e) => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    campaign = b.dataset.v;
-    document.querySelectorAll("#camp button").forEach((x) => x.classList.toggle("sel", x === b));
-  });
+function cleanName(value) {
+  return String(value ?? "").normalize("NFC").trim().replace(/\s+/gu, " ");
+}
 
-  function showMsg(text, type) {
-    clearTimeout(msgTimer);
-    msg.textContent = text;
-    msg.className = "msg " + type;
-    msg.style.opacity = 1;
-    msgTimer = setTimeout(() => {
-      msg.style.opacity = 0;
-      setTimeout(() => msg.classList.add("hidden"), 500);
-    }, 4000);
-  }
-
-  // SAVE
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // stops the page from refreshing
-
-    const firstName = $("firstName").value.trim();
-    const surname = $("surname").value.trim();
-    const phone = $("phone").value.trim();
-    const email = $("email").value.trim();
-
-    if (!firstName || !surname) return showMsg("Please enter name and surname.", "err");
-    if (!phone) return showMsg("Please enter a phone number.", "err");
-    if (!email || !email.includes("@")) return showMsg("Please enter a valid email.", "err");
-    if (!campaign) return showMsg("Please choose a campaign: UK, Local or Both.", "err");
-    if (!db) return showMsg("Firebase isn't connected. Check firebase-config.js.", "err");
-
-    const btn = $("saveBtn");
-    btn.disabled = true;
-    btn.textContent = "Saving...";
-
-    try {
-      await addDoc(collection(db, COLLECTION), {
-        firstName,
-        surname,
-        phone,
-        email,
-        address: $("address").value.trim(),
-        years: Number($("years").value),
-        months: Number($("months").value),
-        experience: $("experience").value.trim(),
-        campaign,
-        uk: campaign === "UK" || campaign === "Both",
-        local: campaign === "Local" || campaign === "Both",
-        createdAt: serverTimestamp()
-      });
-
-      // Only runs after the save succeeded
-      form.reset();
-      campaign = "";
-      document.querySelectorAll("#camp button").forEach((x) => x.classList.remove("sel"));
-      showMsg(`Applicant saved. Thank you, ${firstName}!`, "ok");
-    } catch (err) {
-      console.error(err);
-      showMsg("Could not save: " + (err.message || "unknown error"), "err");
-    } finally {
-      btn.disabled = false;
-      btn.textContent = "Save applicant";
+// South African ID number checksum validation.
+function validSouthAfricanId(id) {
+  if (!/^\d{13}$/.test(id)) return false;
+  const digits = id.split("").map(Number);
+  let total = 0;
+  for (let i = 0; i < 12; i++) {
+    let n = digits[i];
+    if (i % 2 === 1) {
+      n *= 2;
+      if (n > 9) n -= 9;
     }
-  });
-
-  // TABS
-  function show(tab) {
-    const profiles = tab === "profiles";
-    $("addPanel").classList.toggle("hidden", profiles);
-    $("profilesPanel").classList.toggle("hidden", !profiles);
-    $("tabAdd").classList.toggle("active", !profiles);
-    $("tabProfiles").classList.toggle("active", profiles);
-    if (profiles) loadProfiles();
+    total += n;
   }
-  $("tabAdd").addEventListener("click", () => show("add"));
-  $("tabProfiles").addEventListener("click", () => show("profiles"));
+  return (10 - total % 10) % 10 === digits[12];
+}
 
-  // PROFILES
-  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+// Save applicant. The button is disabled while a request is in progress.
+$("applicantForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const btn = $("saveBtn");
+  if (btn.disabled) return;
 
-  function normalise(d) {
-    const uk = d.uk ?? (d.campaign === "UK" || d.campaign === "Both");
-    const local = d.local ?? (d.campaign === "Local" || d.campaign === "Both");
-    return {
-      first: d.firstName || d.name || "",
-      surname: d.surname || "",
-      phone: d.phone || d.number || "",
-      email: d.email || "",
-      address: d.address || "",
-      years: d.years ?? d.yearsExperience ?? 0,
-      months: d.months ?? 0,
-      history: d.experience || d.workExperience || d.workHistory || "",
-      uk: !!uk,
-      local: !!local
-    };
-  }
+  const firstName = cleanName($("firstName").value);
+  const surname = cleanName($("surname").value);
+  const idNumber = $("idNumber").value.trim();
+  const phone = $("phone").value.trim();
+  const email = $("email").value.trim().toLowerCase();
+  const address = $("address").value.trim();
+  const experience = $("experience").value.trim();
 
-  async function loadProfiles() {
-    $("list").innerHTML = '<div class="empty">Loading...</div>';
-    try {
-      const snap = await getDocs(collection(db, COLLECTION));
-      people = snap.docs.map((d) => normalise(d.data()));
-      people.sort((a, b) => (a.surname + a.first).localeCompare(b.surname + b.first));
-      render();
-    } catch (err) {
-      console.error(err);
-      $("list").innerHTML = `<div class="empty">Could not load profiles: ${esc(err.message)}</div>`;
-    }
-  }
+  if (!firstName || !surname)
+    return showMsg("Please enter both first name and surname.", "err");
 
-  function render() {
-    const q = $("search").value.trim().toLowerCase();
-    const shown = people.filter((p) => {
-      const campOk =
-        filter === "All" ||
-        (filter === "UK" && p.uk && !p.local) ||
-        (filter === "Local" && p.local && !p.uk) ||
-        (filter === "Both" && p.uk && p.local);
-      const text = `${p.first} ${p.surname} ${p.email} ${p.phone}`.toLowerCase();
-      return campOk && (!q || text.includes(q));
+  if (!validSouthAfricanId(idNumber))
+    return showMsg("Please check the 13-digit South African ID number.", "err");
+
+  if (!phone)
+    return showMsg("Please enter a phone number.", "err");
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+    return showMsg("Please enter a valid email address.", "err");
+
+  if (!campaign)
+    return showMsg("Please choose UK, Local or Both.", "err");
+
+  if (!db)
+    return showMsg("Firebase isn't connected. Check firebase-config.js.", "err");
+
+  btn.disabled = true;
+  btn.textContent = "Saving...";
+
+  try {
+    await addDoc(collection(db, COLLECTION), {
+      firstName,
+      surname,
+      idNumber,
+      phone,
+      email,
+      address,
+      years: Number($("years").value),
+      months: Number($("months").value),
+      experience,
+      campaign,
+      uk: campaign === "UK" || campaign === "Both",
+      local: campaign === "Local" || campaign === "Both",
+      createdAt: serverTimestamp(),
+      submittedAtClient: new Date().toISOString()
     });
 
-    $("count").textContent = `${shown.length} of ${people.length} ${people.length === 1 ? "person" : "people"}`;
+    $("applicantForm").reset();
+    campaign = "";
+    document.querySelectorAll("#camp button").forEach(item => {
+      item.classList.remove("sel");
+      item.setAttribute("aria-pressed", "false");
+    });
 
-    if (!shown.length) {
-      $("list").innerHTML = '<div class="empty">No applicants found.</div>';
-      return;
-    }
+    showMsg(`Applicant ${firstName} ${surname} saved successfully.`, "ok");
 
-    let html = "";
-    let lastLetter = "";
-    for (const p of shown) {
-      const letter = (p.surname || p.first || "#").charAt(0).toUpperCase();
-      if (letter !== lastLetter) {
-        html += `<div class="letter">${esc(letter)}</div>`;
-        lastLetter = letter;
-      }
-      html += `
-        <div class="person">
-          <div class="ph">
-            <b>${esc(p.surname)}, ${esc(p.first)}</b>
-            <div class="badges">
-              <span class="badge ${p.uk ? "on" : ""}">UK${p.uk ? "" : " – no"}</span>
-              <span class="badge ${p.local ? "on" : ""}">Local${p.local ? "" : " – no"}</span>
-            </div>
-          </div>
-          <div class="pb">
-            <div class="k">Phone</div><div class="v">${esc(p.phone)}</div>
-            <div class="k">Email</div><div class="v">${esc(p.email)}</div>
-            <div class="k">Address</div><div class="v">${esc(p.address)}</div>
-            <div class="k">Experience</div><div class="v">${esc(p.years)} years ${esc(p.months)} months</div>
-            <div class="k">Work history</div><div class="v">${esc(p.history)}</div>
-          </div>
-        </div>`;
+    if (!$("profilesPanel").classList.contains("hidden")) {
+      await loadProfiles();
     }
-    $("list").innerHTML = html;
+  } catch (error) {
+    console.error("Applicant save failed:", error);
+    showMsg("Could not save applicant: " + (error.message || "unknown error") +
+      ". Check your internet connection and Firebase permissions.", "err");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Save applicant";
+  }
+});
+
+// Tabs
+function show(tab) {
+  const profiles = tab === "profiles";
+  $("addPanel").classList.toggle("hidden", profiles);
+  $("profilesPanel").classList.toggle("hidden", !profiles);
+  $("tabAdd").classList.toggle("active", !profiles);
+  $("tabProfiles").classList.toggle("active", profiles);
+  if (profiles) loadProfiles();
+}
+$("tabAdd").addEventListener("click", () => show("add"));
+$("tabProfiles").addEventListener("click", () => show("profiles"));
+
+const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
+  "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+})[char]);
+
+function formatSavedTime(data) {
+  let date = null;
+  if (data.createdAt && typeof data.createdAt.toDate === "function") {
+    date = data.createdAt.toDate();
+  } else if (data.submittedAtClient) {
+    date = new Date(data.submittedAtClient);
+  } else if (data.createdAt) {
+    date = new Date(data.createdAt);
   }
 
-  $("search").addEventListener("input", render);
-  $("filters").addEventListener("click", (e) => {
-    const b = e.target.closest("button");
-    if (!b) return;
-    filter = b.dataset.f;
-    document.querySelectorAll("#filters .chip").forEach((x) => x.classList.toggle("active", x === b));
+  if (!date || Number.isNaN(date.getTime())) return "Not recorded";
+
+  return new Intl.DateTimeFormat("en-ZA", {
+    timeZone: "Africa/Johannesburg",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).format(date) + " SAST";
+}
+
+function normalise(data) {
+  const uk = data.uk ?? (data.campaign === "UK" || data.campaign === "Both");
+  const local = data.local ?? (data.campaign === "Local" || data.campaign === "Both");
+
+  return {
+    first: data.firstName || data.name || "",
+    surname: data.surname || "",
+    idNumber: data.idNumber || data.id || "",
+    phone: data.phone || data.number || "",
+    email: data.email || "",
+    address: data.address || "",
+    years: data.years ?? data.yearsExperience ?? 0,
+    months: data.months ?? 0,
+    history: data.experience || data.workExperience || data.workHistory || "",
+    submitted: formatSavedTime(data),
+    uk: Boolean(uk),
+    local: Boolean(local)
+  };
+}
+
+async function loadProfiles() {
+  if (!db) {
+    $("list").innerHTML = '<div class="empty">Firebase is not connected.</div>';
+    return;
+  }
+
+  $("list").innerHTML = '<div class="empty">Loading applicants...</div>';
+
+  try {
+    const snapshot = await getDocs(collection(db, COLLECTION));
+    people = snapshot.docs.map(doc => normalise(doc.data()));
+    people.sort((a, b) => (a.surname + a.first).localeCompare(b.surname + b.first));
     render();
+  } catch (error) {
+    console.error("Profile loading failed:", error);
+    $("list").innerHTML =
+      `<div class="empty">Could not load profiles: ${esc(error.message)}</div>`;
+  }
+}
+
+function render() {
+  const query = $("search").value.trim().toLowerCase();
+
+  const shown = people.filter(person => {
+    const campaignMatches = filter === "All" ||
+      (filter === "UK" && person.uk && !person.local) ||
+      (filter === "Local" && person.local && !person.uk) ||
+      (filter === "Both" && person.uk && person.local);
+
+    const searchable = [
+      person.first, person.surname, person.idNumber,
+      person.email, person.phone
+    ].join(" ").toLowerCase();
+
+    return campaignMatches && (!query || searchable.includes(query));
   });
+
+  $("count").textContent = `${shown.length} of ${people.length} applicants`;
+
+  if (!shown.length) {
+    $("list").innerHTML = '<div class="empty">No applicants found.</div>';
+    return;
+  }
+
+  let html = "";
+  let lastLetter = "";
+
+  for (const person of shown) {
+    const letter = (person.surname || person.first || "#").charAt(0).toUpperCase();
+
+    if (letter !== lastLetter) {
+      html += `<div class="letter">${esc(letter)}</div>`;
+      lastLetter = letter;
+    }
+
+    html += `
+      <div class="person">
+        <div class="ph">
+          <b>${esc(person.surname)}${person.surname && person.first ? ", " : ""}${esc(person.first)}</b>
+          <div class="badges">
+            <span class="badge ${person.uk ? "on" : ""}">UK${person.uk ? "" : " – no"}</span>
+            <span class="badge ${person.local ? "on" : ""}">Local${person.local ? "" : " – no"}</span>
+          </div>
+        </div>
+        <div class="pb">
+          <div class="k">South African ID number</div><div class="v">${esc(person.idNumber || "Not provided")}</div>
+          <div class="k">Phone</div><div class="v">${esc(person.phone)}</div>
+          <div class="k">Email</div><div class="v">${esc(person.email)}</div>
+          <div class="k">Address</div><div class="v">${esc(person.address)}</div>
+          <div class="k">Experience</div><div class="v">${esc(person.years)} years ${esc(person.months)} months</div>
+          <div class="k">Work history</div><div class="v">${esc(person.history)}</div>
+          <div class="k">Application date and time</div><div class="v">${esc(person.submitted)}</div>
+        </div>
+      </div>`;
+  }
+
+  $("list").innerHTML = html;
+}
+
+$("search").addEventListener("input", render);
+$("filters").addEventListener("click", event => {
+  const button = event.target.closest("button[data-f]");
+  if (!button) return;
+  filter = button.dataset.f;
+  document.querySelectorAll("#filters .chip").forEach(item =>
+    item.classList.toggle("active", item === button)
+  );
+  render();
+});
 </script>
 </body>
 </html>
